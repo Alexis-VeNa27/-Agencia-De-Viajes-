@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.example.org/Aerolinea" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/Aerolinea" targetNamespace="http://www.example.org/Aerolinea">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.example.org/Aerolinea">
+
+	<element name="AgregarVueloRequest">
+		<complexType>
+			<sequence>
+				<element name="idVuelo" type="int"/>
+				<element name="origen" type="string"/>
+				<element name="destino" type="string"/>
+				<element name="hora" type="string"/>
+				<element name="fecha" type="string"/>
+				<element name="precio" type="int"/>				
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AgregarVueloResponse">
+		<complexType>
+			<sequence>								
+				<element name="mensaje"/>
+				<!--<element name="idVuelo"></element>
+				<element name="origen"></element>
+				<element name="destino"></element>
+				<element name="hora"></element>
+				<element name="fecha"></element>
+				<element name="precio"></element>-->				
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="MostrarVueloRequest">
+		<complexType>
+			<sequence>
+				<element name="idVuelo" type="int"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="MostrarVueloResponse">
+		<complexType>
+			<sequence>
+				<element name="mensaje"/>
+				<!--<element name="idVuelo"></element>
+				<element name="origen"></element>
+				<element name="destino"></element>
+				<element name="hora"></element>
+				<element name="fecha"></element>
+				<element name="precio"></element>-->				
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="ModificarVueloRequest">
+		<complexType>
+			<sequence>
+				<element name="idVuelo" type="int"/>			
+				<element name="origen" type="string"/>
+				<element name="destino" type="string"/>
+				<element name="hora" type="string"/>
+				<element name="fecha" type="string"/>
+				<element name="precio" type="int"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ModificarVueloResponse">
+		<complexType>
+			<sequence>
+				<element name="mensaje"/>
+				<!--<element name="idVuelo"></element>
+				<element name="origen"></element>
+				<element name="destino"></element>
+				<element name="hora"></element>
+				<element name="fecha"></element>
+				<element name="precio"></element>-->				
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="EliminarVueloRequest">
+		<complexType>
+			<sequence>
+				<element name="idVuelo" type="int"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="EliminarVueloResponse">
+		<complexType>
+			<sequence>
+				<element name="mensaje"/>
+				<!--<element name="idVuelo"></element>
+				<element name="origen"></element>
+				<element name="destino"></element>
+				<element name="hora"></element>
+				<element name="fecha"></element>
+				<element name="precio"></element>-->				
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="BuscarVuelosRequest">
+		<complexType/>
+	</element>
+	
+	<element name="BuscarVuelosResponse">
+		<complexType>
+			<sequence>
+				<element maxOccurs="unbounded" name="vuelos">
+					<complexType>
+						<sequence>													
+							<element name="idVuelo"/>
+							<element name="origen"/>
+							<element name="destino"/>
+							<element name="hora"/>
+							<element name="fecha"/>
+							<element name="precio"/>		
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="RealizarCompraRequest">
+		<complexType>
+			<sequence>
+				<element name="idCompra" type="int"/>
+				<element name="idVuelo" type="int"/>
+				<element name="nomCliente" type="string"/>
+				<element name="metodoPago" type="string"/>
+				<element name="asiento" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="RealizarCompraResponse">
+		<complexType>
+			<sequence>
+				<element name="mensaje"/>
+				<!--<element name="idCompra"></element>
+				<element name="idVuelo"></element>
+				<element name="nomCliente"></element>
+				<element name="metodoPago"></element>
+				<element name="asiento"></element>-->				
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="MostrarCompraRequest">
+		<complexType>
+			<sequence>
+				<element name="idCompra" type="int"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="MostrarCompraResponse">
+		<complexType>
+			<sequence>
+				<element name="mensaje"/>
+				<!--<element name="idCompra"></element>
+				<element name="idVuelo"></element>
+				<element name="nomCliente"></element>
+				<element name="metodoPago"></element>
+				<element name="asiento"></element>-->				
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="ModificarCompraRequest">
+		<complexType>
+			<sequence>
+				<element name="idCompra" type="int"/>				
+				<element name="idVuelo" type="int"/>
+				<element name="nomCliente" type="string"/>
+				<element name="metodoPago" type="string"/>
+				<element name="asiento" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ModificarCompraResponse">
+		<complexType>
+			<sequence>
+				<element name="mensaje"/>
+				<!--<element name="idCompra"></element>
+				<element name="idVuelo"></element>
+				<element name="nomCliente"></element>
+				<element name="metodoPago"></element>
+				<element name="asiento"></element>-->				
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="CancelarCompraRequest">
+		<complexType>
+			<sequence>
+				<element name="idCompra" type="int"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="CancelarCompraResponse">
+		<complexType>
+			<sequence>
+				<element name="mensaje"/>
+				<!--<element name="idCompra"></element>
+				<element name="idVuelo"></element>
+				<element name="nomCliente"></element>
+				<element name="metodoPago"></element>
+				<element name="asiento"></element>-->				
+			</sequence>
+		</complexType>
+	</element>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="RealizarCompraRequest">
+    <wsdl:part element="tns:RealizarCompraRequest" name="RealizarCompraRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelarCompraResponse">
+    <wsdl:part element="tns:CancelarCompraResponse" name="CancelarCompraResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EliminarVueloRequest">
+    <wsdl:part element="tns:EliminarVueloRequest" name="EliminarVueloRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RealizarCompraResponse">
+    <wsdl:part element="tns:RealizarCompraResponse" name="RealizarCompraResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MostrarVueloResponse">
+    <wsdl:part element="tns:MostrarVueloResponse" name="MostrarVueloResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ModificarVueloRequest">
+    <wsdl:part element="tns:ModificarVueloRequest" name="ModificarVueloRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BuscarVuelosResponse">
+    <wsdl:part element="tns:BuscarVuelosResponse" name="BuscarVuelosResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AgregarVueloResponse">
+    <wsdl:part element="tns:AgregarVueloResponse" name="AgregarVueloResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MostrarVueloRequest">
+    <wsdl:part element="tns:MostrarVueloRequest" name="MostrarVueloRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelarCompraRequest">
+    <wsdl:part element="tns:CancelarCompraRequest" name="CancelarCompraRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BuscarVuelosRequest">
+    <wsdl:part element="tns:BuscarVuelosRequest" name="BuscarVuelosRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MostrarCompraResponse">
+    <wsdl:part element="tns:MostrarCompraResponse" name="MostrarCompraResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ModificarVueloResponse">
+    <wsdl:part element="tns:ModificarVueloResponse" name="ModificarVueloResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ModificarCompraResponse">
+    <wsdl:part element="tns:ModificarCompraResponse" name="ModificarCompraResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AgregarVueloRequest">
+    <wsdl:part element="tns:AgregarVueloRequest" name="AgregarVueloRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EliminarVueloResponse">
+    <wsdl:part element="tns:EliminarVueloResponse" name="EliminarVueloResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ModificarCompraRequest">
+    <wsdl:part element="tns:ModificarCompraRequest" name="ModificarCompraRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MostrarCompraRequest">
+    <wsdl:part element="tns:MostrarCompraRequest" name="MostrarCompraRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AerolineaPort">
+    <wsdl:operation name="RealizarCompra">
+      <wsdl:input message="tns:RealizarCompraRequest" name="RealizarCompraRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:RealizarCompraResponse" name="RealizarCompraResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelarCompra">
+      <wsdl:input message="tns:CancelarCompraRequest" name="CancelarCompraRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:CancelarCompraResponse" name="CancelarCompraResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarVuelo">
+      <wsdl:input message="tns:EliminarVueloRequest" name="EliminarVueloRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:EliminarVueloResponse" name="EliminarVueloResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarVuelo">
+      <wsdl:input message="tns:MostrarVueloRequest" name="MostrarVueloRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:MostrarVueloResponse" name="MostrarVueloResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarVuelo">
+      <wsdl:input message="tns:ModificarVueloRequest" name="ModificarVueloRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ModificarVueloResponse" name="ModificarVueloResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarVuelos">
+      <wsdl:input message="tns:BuscarVuelosRequest" name="BuscarVuelosRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:BuscarVuelosResponse" name="BuscarVuelosResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarVuelo">
+      <wsdl:input message="tns:AgregarVueloRequest" name="AgregarVueloRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:AgregarVueloResponse" name="AgregarVueloResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarCompra">
+      <wsdl:input message="tns:MostrarCompraRequest" name="MostrarCompraRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:MostrarCompraResponse" name="MostrarCompraResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarCompra">
+      <wsdl:input message="tns:ModificarCompraRequest" name="ModificarCompraRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ModificarCompraResponse" name="ModificarCompraResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AerolineaPortSoap11" type="tns:AerolineaPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="RealizarCompra">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="RealizarCompraRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="RealizarCompraResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelarCompra">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CancelarCompraRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CancelarCompraResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarVuelo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="EliminarVueloRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="EliminarVueloResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarVuelo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="MostrarVueloRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="MostrarVueloResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarVuelo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ModificarVueloRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ModificarVueloResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarVuelos">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="BuscarVuelosRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="BuscarVuelosResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarVuelo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AgregarVueloRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AgregarVueloResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarCompra">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="MostrarCompraRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="MostrarCompraResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarCompra">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ModificarCompraRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ModificarCompraResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AerolineaPortService">
+    <wsdl:port binding="tns:AerolineaPortSoap11" name="AerolineaPortSoap11">
+      <soap:address location="http://3.86.69.101:8080/ws/Aerolinea"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
