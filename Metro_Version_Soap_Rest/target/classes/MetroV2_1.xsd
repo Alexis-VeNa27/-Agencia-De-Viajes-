@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.uvMetro.me/MetroV2_1" 
+	xmlns:tns="http://www.uvMetro.me/MetroV2_1" 
+	elementFormDefault="qualified">
+	
+	<element name="CompraRequest">
+		<complexType>
+			<sequence>
+				<element name="Compra" type="string"></element>
+				<element name="Usuario" type="string"></element>
+				<element name="TypeVagon" type="string"></element>
+				<element name="Origen" type="string"></element>
+				<element name="NombreLinea" type="string"></element>
+				<element name="TypePago" type="string"></element>
+				<element name="Fecha" type="string"></element>
+				<element name="Precio" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="CompraResponse">
+		<complexType>
+			<sequence>
+				<element name="Compra"></element>
+				<element name="Usuario"></element>
+				<element name="TypeVagon"></element>
+				<element name="Origen"></element>
+				<element name="NombreLinea"></element>
+				<element name="TypePago"></element>
+				<element name="Fecha"></element>
+				<element name="Precio"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="CancelarCompraRequest">
+		<complexType>
+			<sequence>
+				<element name="Cancelación" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="CancelarCompraResponse">
+		<complexType>
+			<sequence>
+				<element name="Respuesta"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	
+	<element name="MostrarCompraRequest">
+		<complexType>
+			<sequence>
+				<element name="Compra" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="MostrarCompraResponse">
+		<complexType>
+			<sequence>
+				<element name="Compra"></element>
+				<element name="Usuario"></element>
+				<element name="TypeVagon"></element>
+				<element name="Origen"></element>
+				<element name="NombreLinea"></element>
+				<element name="TypePago"></element>
+				<element name="Fecha"></element>
+				<element name="Precio"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="MostrarComprasRequest">
+		<complexType/>
+	</element>
+	
+	<element name="MostrarComprasResponse">
+		<complexType>
+			<sequence>
+				<element name="compra" maxOccurs="unbounded">
+					<complexType>
+						<sequence>
+							<element name="Compra"></element>
+							<element name="Usuario"></element>
+							<element name="TypeVagon"></element>
+							<element name="Origen"></element>
+							<element name="NombreLinea"></element>
+							<element name="TypePago"></element>
+							<element name="Fecha"></element>
+							<element name="Precio"></element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="ActualizarCompraRequest">
+		<complexType>
+			<sequence>
+				<element name="Compra" type="string"></element>
+				<element name="Usuario" type="string"></element>
+				<element name="TypeVagon" type="string"></element>
+				<element name="Origen" type="string"></element>
+				<element name="NombreLinea" type="string"></element>
+				<element name="TypePago" type="string"></element>
+				<element name="Precio" type="string"></element>
+				<element name="Fecha" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="ActualizarCompraResponse">
+		<complexType>
+			<sequence>
+				<element name="Respuesta"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="UsuarioRequest">
+		<complexType>
+			 <sequence>
+				<element name="NombreUsuario" type="string"></element>
+				<element name="FechaDeNacimiento" type="string"></element>
+				<element name="Correo" type="string"></element>
+				<element name="MetodoPago" type="string"></element>
+				<element name="NumeroTarjeta" type="string"></element>			 
+			 </sequence>
+		</complexType>
+	</element>
+	
+	<element name="UsuarioResponse">
+		<complexType>
+			<sequence>
+				<element name="Respuesta"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="MostrarUsuarioRequest">
+		<complexType>
+			<sequence>
+				<element name="usuario" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="MostrarUsuarioResponse">
+		<complexType>
+			<sequence>
+				<element name="NombreUsuario" type="string"></element>
+				<element name="FechaDeNacimiento" type="string"></element>
+				<element name="Correo" type="string"></element>
+				<element name="MetodoPago" type="string"></element>
+				<element name="NumeroTarjeta" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="MostrarUsuariosRequest">
+		<complexType/>
+	</element>
+	
+	<element name="MostrarUsuariosResponse">
+		<complexType>
+			<sequence>
+				<element name="usuario" maxOccurs="unbounded">
+					<complexType>
+						<sequence>
+							<element name="NombreUsuario" type="string"></element>
+							<element name="FechaDeNacimiento" type="string"></element>
+							<element name="Correo" type="string"></element>
+							<element name="MetodoPago" type="string"></element>
+							<element name="NumeroTarjeta" type="string"></element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="ActualizarUsuarioRequest">
+		<complexType>
+			<sequence>
+				<element name="NombreUsuario" type="string"></element>
+				<element name="FechaDeNacimiento" type="string"></element>
+				<element name="Correo" type="string"></element>
+				<element name="MetodoPago" type="string"></element>
+				<element name="NumeroTarjeta" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="ActualizarUsuarioResponse">
+		<complexType>
+			<sequence>
+				<element name="Respuesta"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="EliminarUsuarioRequest">
+		<complexType>
+			<sequence>
+				<element name="IdUsuario" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="EliminarUsuarioResponse">
+		<complexType>
+			<sequence>
+				<element name="Respuesta"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	
+	<element name="LineasMetroRequest">
+		<complexType>
+			<sequence>
+				<element name="NombreLinea" type="string"></element>
+				<element name="Origen" type="string"></element>
+				<element name="Destino" type="string"></element>
+				<element name="Horario" type="string"></element>
+				<element name="Precio" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="LineasMetroResponse">
+		<complexType>
+			<sequence>
+				<element name="respuesta"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="MostrarLineaMetroRequest">
+		<complexType>
+			<sequence>
+				<element name="NombreLinea" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="MostrarLineaMetroResponse">
+		<complexType>
+			<sequence>
+				<element name="NombreLinea"></element>
+				<element name="Origen"></element>
+				<element name="Destino"></element>
+				<element name="Horario"></element>
+				<element name="Precio"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="EliminarLineaMetroRequest">
+		<complexType>
+			<sequence>
+				<element name="NombreLinea" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="EliminarLineaMetroResponse">
+		<complexType>
+			<sequence>
+				<element name="Respuesta"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="ActualizarLineaMetroRequest">
+		<complexType>
+			<sequence>
+				<element name="NombreLinea" type="string"></element>
+				<element name="Origen" type="string"></element>
+				<element name="Destino" type="string"></element>
+				<element name="Horario" type="string"></element>
+				<element name="Precio" type="string"></element>
+			</sequence>
+		</complexType>	
+	</element>
+	
+	<element name="ActualizarLineaMetroResponse">
+		<complexType>
+			<sequence>
+				<element name="Respuesta"></element>
+			</sequence>
+		</complexType>	
+	</element>
+	
+	<element name="MostrarLineasRequest">
+		<complexType/>
+	</element>
+	
+	<element name="MostrarLineasResponse">
+		<complexType>
+			<sequence>
+				<element name="lineas" maxOccurs="unbounded">
+					<complexType>
+						<sequence>
+							<element name="NombreLinea"></element>
+							<element name="Origen"></element>
+							<element name="Destino"></element>
+							<element name="Horario"></element>
+							<element name="Precio"></element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	
+</schema>
