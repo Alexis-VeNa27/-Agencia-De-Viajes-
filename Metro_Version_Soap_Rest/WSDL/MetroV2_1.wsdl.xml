@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.uvMetro.me/MetroV2_1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.uvMetro.me/MetroV2_1" targetNamespace="http://www.uvMetro.me/MetroV2_1">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.uvMetro.me/MetroV2_1">
+	
+	<element name="CompraRequest">
+		<complexType>
+			<sequence>
+				<element name="Compra" type="string"/>
+				<element name="Usuario" type="string"/>
+				<element name="TypeVagon" type="string"/>
+				<element name="Origen" type="string"/>
+				<element name="NombreLinea" type="string"/>
+				<element name="TypePago" type="string"/>
+				<element name="Fecha" type="string"/>
+				<element name="Precio" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="CompraResponse">
+		<complexType>
+			<sequence>
+				<element name="Compra"/>
+				<element name="Usuario"/>
+				<element name="TypeVagon"/>
+				<element name="Origen"/>
+				<element name="NombreLinea"/>
+				<element name="TypePago"/>
+				<element name="Fecha"/>
+				<element name="Precio"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="CancelarCompraRequest">
+		<complexType>
+			<sequence>
+				<element name="Cancelación" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="CancelarCompraResponse">
+		<complexType>
+			<sequence>
+				<element name="Respuesta"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	
+	<element name="MostrarCompraRequest">
+		<complexType>
+			<sequence>
+				<element name="Compra" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="MostrarCompraResponse">
+		<complexType>
+			<sequence>
+				<element name="Compra"/>
+				<element name="Usuario"/>
+				<element name="TypeVagon"/>
+				<element name="Origen"/>
+				<element name="NombreLinea"/>
+				<element name="TypePago"/>
+				<element name="Fecha"/>
+				<element name="Precio"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="MostrarComprasRequest">
+		<complexType/>
+	</element>
+	
+	<element name="MostrarComprasResponse">
+		<complexType>
+			<sequence>
+				<element maxOccurs="unbounded" name="compra">
+					<complexType>
+						<sequence>
+							<element name="Compra"/>
+							<element name="Usuario"/>
+							<element name="TypeVagon"/>
+							<element name="Origen"/>
+							<element name="NombreLinea"/>
+							<element name="TypePago"/>
+							<element name="Fecha"/>
+							<element name="Precio"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="ActualizarCompraRequest">
+		<complexType>
+			<sequence>
+				<element name="Compra" type="string"/>
+				<element name="Usuario" type="string"/>
+				<element name="TypeVagon" type="string"/>
+				<element name="Origen" type="string"/>
+				<element name="NombreLinea" type="string"/>
+				<element name="TypePago" type="string"/>
+				<element name="Precio" type="string"/>
+				<element name="Fecha" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="ActualizarCompraResponse">
+		<complexType>
+			<sequence>
+				<element name="Respuesta"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="UsuarioRequest">
+		<complexType>
+			 <sequence>
+				<element name="NombreUsuario" type="string"/>
+				<element name="FechaDeNacimiento" type="string"/>
+				<element name="Correo" type="string"/>
+				<element name="MetodoPago" type="string"/>
+				<element name="NumeroTarjeta" type="string"/>			 
+			 </sequence>
+		</complexType>
+	</element>
+	
+	<element name="UsuarioResponse">
+		<complexType>
+			<sequence>
+				<element name="Respuesta"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="MostrarUsuarioRequest">
+		<complexType>
+			<sequence>
+				<element name="usuario" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="MostrarUsuarioResponse">
+		<complexType>
+			<sequence>
+				<element name="NombreUsuario" type="string"/>
+				<element name="FechaDeNacimiento" type="string"/>
+				<element name="Correo" type="string"/>
+				<element name="MetodoPago" type="string"/>
+				<element name="NumeroTarjeta" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="MostrarUsuariosRequest">
+		<complexType/>
+	</element>
+	
+	<element name="MostrarUsuariosResponse">
+		<complexType>
+			<sequence>
+				<element maxOccurs="unbounded" name="usuario">
+					<complexType>
+						<sequence>
+							<element name="NombreUsuario" type="string"/>
+							<element name="FechaDeNacimiento" type="string"/>
+							<element name="Correo" type="string"/>
+							<element name="MetodoPago" type="string"/>
+							<element name="NumeroTarjeta" type="string"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="ActualizarUsuarioRequest">
+		<complexType>
+			<sequence>
+				<element name="NombreUsuario" type="string"/>
+				<element name="FechaDeNacimiento" type="string"/>
+				<element name="Correo" type="string"/>
+				<element name="MetodoPago" type="string"/>
+				<element name="NumeroTarjeta" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="ActualizarUsuarioResponse">
+		<complexType>
+			<sequence>
+				<element name="Respuesta"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="EliminarUsuarioRequest">
+		<complexType>
+			<sequence>
+				<element name="IdUsuario" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="EliminarUsuarioResponse">
+		<complexType>
+			<sequence>
+				<element name="Respuesta"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	
+	<element name="LineasMetroRequest">
+		<complexType>
+			<sequence>
+				<element name="NombreLinea" type="string"/>
+				<element name="Origen" type="string"/>
+				<element name="Destino" type="string"/>
+				<element name="Horario" type="string"/>
+				<element name="Precio" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="LineasMetroResponse">
+		<complexType>
+			<sequence>
+				<element name="respuesta"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="MostrarLineaMetroRequest">
+		<complexType>
+			<sequence>
+				<element name="NombreLinea" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="MostrarLineaMetroResponse">
+		<complexType>
+			<sequence>
+				<element name="NombreLinea"/>
+				<element name="Origen"/>
+				<element name="Destino"/>
+				<element name="Horario"/>
+				<element name="Precio"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="EliminarLineaMetroRequest">
+		<complexType>
+			<sequence>
+				<element name="NombreLinea" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="EliminarLineaMetroResponse">
+		<complexType>
+			<sequence>
+				<element name="Respuesta"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="ActualizarLineaMetroRequest">
+		<complexType>
+			<sequence>
+				<element name="NombreLinea" type="string"/>
+				<element name="Origen" type="string"/>
+				<element name="Destino" type="string"/>
+				<element name="Horario" type="string"/>
+				<element name="Precio" type="string"/>
+			</sequence>
+		</complexType>	
+	</element>
+	
+	<element name="ActualizarLineaMetroResponse">
+		<complexType>
+			<sequence>
+				<element name="Respuesta"/>
+			</sequence>
+		</complexType>	
+	</element>
+	
+	<element name="MostrarLineasRequest">
+		<complexType/>
+	</element>
+	
+	<element name="MostrarLineasResponse">
+		<complexType>
+			<sequence>
+				<element maxOccurs="unbounded" name="lineas">
+					<complexType>
+						<sequence>
+							<element name="NombreLinea"/>
+							<element name="Origen"/>
+							<element name="Destino"/>
+							<element name="Horario"/>
+							<element name="Precio"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	
+</schema>
+  </wsdl:types>
+  <wsdl:message name="CancelarCompraResponse">
+    <wsdl:part element="tns:CancelarCompraResponse" name="CancelarCompraResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LineasMetroResponse">
+    <wsdl:part element="tns:LineasMetroResponse" name="LineasMetroResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MostrarComprasResponse">
+    <wsdl:part element="tns:MostrarComprasResponse" name="MostrarComprasResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MostrarComprasRequest">
+    <wsdl:part element="tns:MostrarComprasRequest" name="MostrarComprasRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MostrarUsuarioResponse">
+    <wsdl:part element="tns:MostrarUsuarioResponse" name="MostrarUsuarioResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarUsuarioResponse">
+    <wsdl:part element="tns:ActualizarUsuarioResponse" name="ActualizarUsuarioResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UsuarioResponse">
+    <wsdl:part element="tns:UsuarioResponse" name="UsuarioResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarLineaMetroRequest">
+    <wsdl:part element="tns:ActualizarLineaMetroRequest" name="ActualizarLineaMetroRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EliminarLineaMetroRequest">
+    <wsdl:part element="tns:EliminarLineaMetroRequest" name="EliminarLineaMetroRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MostrarLineasRequest">
+    <wsdl:part element="tns:MostrarLineasRequest" name="MostrarLineasRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarCompraResponse">
+    <wsdl:part element="tns:ActualizarCompraResponse" name="ActualizarCompraResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EliminarUsuarioResponse">
+    <wsdl:part element="tns:EliminarUsuarioResponse" name="EliminarUsuarioResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CompraResponse">
+    <wsdl:part element="tns:CompraResponse" name="CompraResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MostrarLineasResponse">
+    <wsdl:part element="tns:MostrarLineasResponse" name="MostrarLineasResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarLineaMetroResponse">
+    <wsdl:part element="tns:ActualizarLineaMetroResponse" name="ActualizarLineaMetroResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MostrarUsuarioRequest">
+    <wsdl:part element="tns:MostrarUsuarioRequest" name="MostrarUsuarioRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CompraRequest">
+    <wsdl:part element="tns:CompraRequest" name="CompraRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MostrarLineaMetroRequest">
+    <wsdl:part element="tns:MostrarLineaMetroRequest" name="MostrarLineaMetroRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MostrarLineaMetroResponse">
+    <wsdl:part element="tns:MostrarLineaMetroResponse" name="MostrarLineaMetroResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EliminarUsuarioRequest">
+    <wsdl:part element="tns:EliminarUsuarioRequest" name="EliminarUsuarioRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelarCompraRequest">
+    <wsdl:part element="tns:CancelarCompraRequest" name="CancelarCompraRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MostrarUsuariosRequest">
+    <wsdl:part element="tns:MostrarUsuariosRequest" name="MostrarUsuariosRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MostrarCompraResponse">
+    <wsdl:part element="tns:MostrarCompraResponse" name="MostrarCompraResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarCompraRequest">
+    <wsdl:part element="tns:ActualizarCompraRequest" name="ActualizarCompraRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LineasMetroRequest">
+    <wsdl:part element="tns:LineasMetroRequest" name="LineasMetroRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UsuarioRequest">
+    <wsdl:part element="tns:UsuarioRequest" name="UsuarioRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MostrarUsuariosResponse">
+    <wsdl:part element="tns:MostrarUsuariosResponse" name="MostrarUsuariosResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MostrarCompraRequest">
+    <wsdl:part element="tns:MostrarCompraRequest" name="MostrarCompraRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EliminarLineaMetroResponse">
+    <wsdl:part element="tns:EliminarLineaMetroResponse" name="EliminarLineaMetroResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarUsuarioRequest">
+    <wsdl:part element="tns:ActualizarUsuarioRequest" name="ActualizarUsuarioRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="MetroPort">
+    <wsdl:operation name="CancelarCompra">
+      <wsdl:input message="tns:CancelarCompraRequest" name="CancelarCompraRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:CancelarCompraResponse" name="CancelarCompraResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LineasMetro">
+      <wsdl:input message="tns:LineasMetroRequest" name="LineasMetroRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:LineasMetroResponse" name="LineasMetroResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarCompras">
+      <wsdl:input message="tns:MostrarComprasRequest" name="MostrarComprasRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:MostrarComprasResponse" name="MostrarComprasResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarUsuario">
+      <wsdl:input message="tns:MostrarUsuarioRequest" name="MostrarUsuarioRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:MostrarUsuarioResponse" name="MostrarUsuarioResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUsuario">
+      <wsdl:input message="tns:ActualizarUsuarioRequest" name="ActualizarUsuarioRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ActualizarUsuarioResponse" name="ActualizarUsuarioResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Usuario">
+      <wsdl:input message="tns:UsuarioRequest" name="UsuarioRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:UsuarioResponse" name="UsuarioResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarLineaMetro">
+      <wsdl:input message="tns:ActualizarLineaMetroRequest" name="ActualizarLineaMetroRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ActualizarLineaMetroResponse" name="ActualizarLineaMetroResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarLineaMetro">
+      <wsdl:input message="tns:EliminarLineaMetroRequest" name="EliminarLineaMetroRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:EliminarLineaMetroResponse" name="EliminarLineaMetroResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarLineas">
+      <wsdl:input message="tns:MostrarLineasRequest" name="MostrarLineasRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:MostrarLineasResponse" name="MostrarLineasResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCompra">
+      <wsdl:input message="tns:ActualizarCompraRequest" name="ActualizarCompraRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ActualizarCompraResponse" name="ActualizarCompraResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUsuario">
+      <wsdl:input message="tns:EliminarUsuarioRequest" name="EliminarUsuarioRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:EliminarUsuarioResponse" name="EliminarUsuarioResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Compra">
+      <wsdl:input message="tns:CompraRequest" name="CompraRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:CompraResponse" name="CompraResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarLineaMetro">
+      <wsdl:input message="tns:MostrarLineaMetroRequest" name="MostrarLineaMetroRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:MostrarLineaMetroResponse" name="MostrarLineaMetroResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarUsuarios">
+      <wsdl:input message="tns:MostrarUsuariosRequest" name="MostrarUsuariosRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:MostrarUsuariosResponse" name="MostrarUsuariosResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarCompra">
+      <wsdl:input message="tns:MostrarCompraRequest" name="MostrarCompraRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:MostrarCompraResponse" name="MostrarCompraResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MetroPortSoap11" type="tns:MetroPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CancelarCompra">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CancelarCompraRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CancelarCompraResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LineasMetro">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LineasMetroRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LineasMetroResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarCompras">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="MostrarComprasRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="MostrarComprasResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarUsuario">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="MostrarUsuarioRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="MostrarUsuarioResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUsuario">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ActualizarUsuarioRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ActualizarUsuarioResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Usuario">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UsuarioRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UsuarioResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarLineaMetro">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ActualizarLineaMetroRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ActualizarLineaMetroResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarLineaMetro">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="EliminarLineaMetroRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="EliminarLineaMetroResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarLineas">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="MostrarLineasRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="MostrarLineasResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCompra">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ActualizarCompraRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ActualizarCompraResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUsuario">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="EliminarUsuarioRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="EliminarUsuarioResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Compra">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CompraRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CompraResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarLineaMetro">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="MostrarLineaMetroRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="MostrarLineaMetroResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarUsuarios">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="MostrarUsuariosRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="MostrarUsuariosResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarCompra">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="MostrarCompraRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="MostrarCompraResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MetroPortService">
+    <wsdl:port binding="tns:MetroPortSoap11" name="MetroPortSoap11">
+      <soap:address location="http://34.204.7.251:8080/ws/MetroV2_1"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
