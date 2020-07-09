@@ -136,7 +136,7 @@ De igual forma fue probado en el navegador **Microsoft Edge** y **Brave**.
 
 `Equipo De Trabajo:`
 
-![](![EquipoTrabajo.png](https://github.com/Alexis-VeNa27/Agencia-De-Viajes-HG-VN/blob/master/Interfaces/EquipoTrabajo.png?raw=true)
+![EquipoTrabajo.png](https://github.com/Alexis-VeNa27/Agencia-De-Viajes-HG-VN/blob/master/Interfaces/EquipoTrabajo.png?raw=true)
 
 
 
