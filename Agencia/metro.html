@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/x-icon" href="assets/img/ImgMetro/Metro.ico" />
+  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="css/styles.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/StyleMetro.css">
+  <link rel="stylesheet" href="css/StyleNav.css">
+  <title>Metro HG-VN</title>
+</head>
+
+<body>
+  <a href="#ListLineas" class="btn-flotante"><span class="fa fa-arrow-up"></span></a>
+  <header class="masthead2" id="top">
+    <div class="container">
+      <div class="masthead2-subheading text-light">Metro</div>
+      <div class="masthead2-heading text-light">HG-VN</div>
+      <div class="masthead2-subheading text-light">Para poder realizar una Compra necesitas Registrarte</div>
+      <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#ListLineas">Consultar Lineas</a>
+      <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="registro.html">Registrar Usuario</a>
+    </div>
+  </header>
+
+  <section class="page-section listView" id="ListLineas">
+    <div class="container">
+      <h1>Lista De Lineas De Metro</h1>
+      <table id="app" class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>Nombre de la Linea</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Horario</th>
+            <th>Precio$</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="linea in lineas">
+            <td>{{linea.nombreLinea}}</td>
+            <td>{{linea.origen}}</td>
+            <td>{{linea.destino}}</td>
+            <td>{{linea.horario}}</td>
+            <td>{{linea.precio}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <script>
+        new Vue({
+          el: '#app',
+          data() {
+            return {
+              lineas: []
+            }
+          },
+          methods: {
+            leerApi() {
+              axios.get('https://cors-anywhere.herokuapp.com/http://34.204.7.251:8080/RestLinea/LineasMetro').then(response => this.lineas = response.data);
+            }
+          },
+          created() {
+            this.leerApi()
+          }
+        })
+      </script>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <ul class="tabs">
+        <li><a class="smoothscroll" href="#tab1"><span class="fa fa-plus"></span><span class="tab-text">Realizar Compra</span></a></li>
+        <li><a class="smoothscroll" href="#tab2View"><span class="fa fa-eye"></span><span class="tab-text">Mostrar Compra</span></a></li>
+        <li><a class="smoothscroll" href="#tab3"><i class="fas fa-pencil-alt fa-fw"></i><span class="tab-text">Modificar Compra</span></a></li>
+        <li><a class="smoothscroll" href="#tab4"><span class="fa fa-eraser"></span><span class="tab-text">Cancelar Compra</span></a></li>
+      </ul>
+
+      <div class="secciones">
+        <article id="tab1">
+          <h1>Realizar Compra</h1>
+          <form class="box" name="contactForm" id="addCompra" method="GET">
+            <input name="Compra" type="text" id="Compra" placeholder="Nombre de la Compra" value="" minlength="2" required aria-required="true" class="full-width">
+            <input name="UsuarioCompra" type="text" id="UsuarioCompra" placeholder="Usuario" value="" minlength="2" required aria-required="true" class="full-width">
+            <select class="full-width mdb-select md-form" name="TypeVagon" id="TypeVagon" required>
+              <option value="VIP">VIP</option>
+              <option value="Turista">Turista</option>
+            </select>
+            <input name="OrigenCompra" type="text" id="OrigenCompra" placeholder="Origen" value="" minlength="2" required aria-required="true" class="full-width">
+            <input name="NombreLineaCompra" type="text" id="NombreLineaCompra" placeholder="Nombre de la Linea" value="" minlength="2" required aria-required="true" class="full-width">
+            <select class="full-width mdb-select md-form" name="TypePagoCompra" id="TypePagoCompra" required>
+              <option value="Credito">Credito</option>
+              <option value="Efectivo">Efectivo</option>
+            </select>
+            <input name="FechaCompra" type="date" id="FechaCompra" placeholder="Fecha" value="" minlength="2" required aria-required="true" class="full-width">
+            <input name="PrecioCompra" type="text" id="PrecioCompra" placeholder="Precio" value="" minlength="2" required aria-required="true" class="full-width">
+            <button class="full-width btn--primary" onclick="validarCompra();">Realizar Compra</button>
+            <input type="reset" class="full-width btn--primary" value="Limpiar Campos">
+          </form>
+          <script>
+            function validarCompra() {
+              var Compra, UsuarioCompra, TypeVagon, OrigenCompra, NombreLineaCompra, TypePagoCompra, FechaCompra, PrecioCompra;
+
+              Compra = document.getElementById('Compra').value;
+              UsuarioCompra = document.getElementById('UsuarioCompra').value;
+              TypeVagon = document.getElementById('TypeVagon').value;
+              OrigenCompra = document.getElementById('OrigenCompra').value;
+              NombreLineaCompra = document.getElementById('NombreLineaCompra').value;
+              TypePagoCompra = document.getElementById('TypePagoCompra').value;
+              FechaCompra = document.getElementById('FechaCompra').value;
+              PrecioCompra = document.getElementById('PrecioCompra').value;
+
+              if (Compra === "" || UsuarioCompra === "" || TypeVagon === "" || OrigenCompra === "" || NombreLineaCompra === "" || TypePagoCompra === "" || FechaCompra === "" || PrecioCompra === "") {
+                Swal.fire({
+                  title: "Completa los Campos",
+                  text: "Todos los campos son Obligatorios",
+                  icon: 'info',
+                  timer: 10000,
+                  timerProgressBar: true
+                });
+                return false;
+              } else {
+                funcionRealizarCompra(Compra, UsuarioCompra, TypeVagon, OrigenCompra, NombreLineaCompra, TypePagoCompra, FechaCompra, PrecioCompra)
+              }
+            }
+
+            function funcionRealizarCompra(a, b, c, d, e, f, g, h) {
+              var parametros = {
+                "Compra": a,
+                "UsuarioCompra": b,
+                "TypeVagon": c,
+                "OrigenCompra": d,
+                "NombreLineaCompra": e,
+                "TypePagoCompra": f,
+                "FechaCompra": g,
+                "PrecioCompra": h
+              };
+              $.ajax({
+                data: parametros,
+                url: 'phpSoap/realizarCompra.php',
+                type: 'get',
+                success: function(response) {
+                  Swal.fire({
+                    title: response,
+                    //text: response,
+                    icon: 'info',
+                    timer: 10000,
+                    timerProgressBar: true
+                  });
+                }
+              });
+            }
+          </script>
+        </article>
+
+        <article id="tab2View">
+          <h1>Mostrar Compra</h1>
+          <div id="TableCompraView">
+            <form class="box3" name="contactForm" id="viewCompra" method="GET" novalidate="novalidate">
+              <input type="text" v-model="NombreCompraView" placeholder="Nombre de la Compra" value="" minlength="2" required aria-required="true" class="full-width">
+              <button class="full-width btn--primary" v-on:click="leerApiCompras">Buscar</button>
+              <input type="reset" class="full-width btn--primary" value="Limpiar Campo">
+            </form>
+            <table class="table table-striped table-bordered">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Nombre de la Compra</th>
+                  <th>Usuario</th>
+                  <th>Tipo de Vagon</th>
+                  <th>Origen</th>
+                  <th>Nombre de la Linea</th>
+                  <th>Tipo de Pago</th>
+                  <th>Fecha</th>
+                  <th>Precio</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>{{compras.compra}}</b></td>
+                  <td>{{compras.usuario}}</td>
+                  <td>{{compras.typeVagon}}</td>
+                  <td>{{compras.origen}}</td>
+                  <td>{{compras.nombreLinea}}</td>
+                  <td>{{compras.typePago}}</td>
+                  <td>{{compras.fecha}}</td>
+                  <td>{{compras.precio}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+          <script>
+            new Vue({
+              el: '#TableCompraView',
+              data() {
+                return {
+                  compras: [],
+                  NombreCompraView: ""
+                }
+              },
+              methods: {
+                leerApiCompras() {
+                  axios.get('https://cors-anywhere.herokuapp.com/http://34.204.7.251:8080/RestCompras/findCompra/' + this.NombreCompraView).then(response => this.compras = response.data);
+                }
+              }
+            })
+          </script>
+        </article>
+        <article id="tab3">
+          <h1>Modificar Compra</h1>
+          <form class="box" name="contactForm" id="updateCompra" method="GET">
+            <input name="CompraUpdate" type="text" id="CompraUpdate" placeholder="Nombre de la Compra" value="" minlength="2" required aria-required="true" class="full-width">
+            <input name="UsuarioCompraUpdate" type="text" id="UsuarioCompraUpdate" placeholder="Usuario" value="" minlength="2" required aria-required="true" class="full-width">
+            <select class="full-width mdb-select md-form" name="TypeVagonUpdate" id="TypeVagonUpdate" required>
+              <option value="VIP">VIP</option>
+              <option value="Turista">Turista</option>
+            </select>
+            <input name="OrigenCompraUpdate" type="text" id="OrigenCompraUpdate" placeholder="Origen" value="" minlength="2" required aria-required="true" class="full-width">
+            <input name="NombreLineaCompraUpdate" type="text" id="NombreLineaCompraUpdate" placeholder="Nombre de la Linea" value="" minlength="2" required aria-required="true" class="full-width">
+            <select class="full-width mdb-select md-form" name="TypePagoCompraUpdate" id="TypePagoCompraUpdate" required>
+              <option value="Credito">Credito</option>
+              <option value="Efectivo">Efectivo</option>
+            </select>
+            <input name="FechaCompraUpdate" type="date" id="FechaCompraUpdate" placeholder="Fecha" value="" minlength="2" required aria-required="true" class="full-width">
+            <input name="PrecioCompraUpdate" type="text" id="PrecioCompraUpdate" placeholder="Precio" value="" minlength="2" required aria-required="true" class="full-width">
+            <button class="full-width btn--primary" onclick="validarCompraUpdate();">Realizar Compra</button>
+            <input type="reset" class="full-width btn--primary" value="Limpiar Campos">
+          </form>
+          <script>
+            function validarCompraUpdate() {
+              var CompraUpdate, UsuarioCompraUpdate, TypeVagonUpdate, OrigenCompraUpdate, NombreLineaCompraUpdate, TypePagoCompraUpdate, FechaCompraUpdate, PrecioCompraUpdate;
+
+              CompraUpdate = document.getElementById('CompraUpdate').value;
+              UsuarioCompraUpdate = document.getElementById('UsuarioCompraUpdate').value;
+              TypeVagonUpdate = document.getElementById('TypeVagonUpdate').value;
+              OrigenCompraUpdate = document.getElementById('OrigenCompraUpdate').value;
+              NombreLineaCompraUpdate = document.getElementById('NombreLineaCompraUpdate').value;
+              TypePagoCompraUpdate = document.getElementById('TypePagoCompraUpdate').value;
+              FechaCompraUpdate = document.getElementById('FechaCompraUpdate').value;
+              PrecioCompraUpdate = document.getElementById('PrecioCompraUpdate').value;
+
+              if (CompraUpdate === "" || UsuarioCompraUpdate === "" || TypeVagonUpdate === "" || OrigenCompraUpdate === "" || NombreLineaCompraUpdate === "" || TypePagoCompraUpdate === "" || FechaCompraUpdate === "" || PrecioCompraUpdate === "") {
+                Swal.fire({
+                  title: "Completa los Campos",
+                  text: "Todos los campos son Obligatorios",
+                  icon: 'info',
+                  timer: 10000,
+                  timerProgressBar: true
+                });
+              } else {
+                funcionActualizarCompra(CompraUpdate, UsuarioCompraUpdate, TypeVagonUpdate, OrigenCompraUpdate, NombreLineaCompraUpdate, TypePagoCompraUpdate, FechaCompraUpdate, PrecioCompraUpdate)
+              }
+            }
+
+            function funcionActualizarCompra(a, b, c, d, e, f, g, h) {
+              var parametros = {
+                "CompraUpdate": a,
+                "UsuarioCompraUpdate": b,
+                "TypeVagonUpdate": c,
+                "OrigenCompraUpdate": d,
+                "NombreLineaCompraUpdate": e,
+                "TypePagoCompraUpdate": f,
+                "FechaCompraUpdate": g,
+                "PrecioCompraUpdate": h
+              };
+              $.ajax({
+                data: parametros,
+                url: 'phpSoap/actualizarCompra.php',
+                type: 'get',
+                success: function(response) {
+                  Swal.fire({
+                    title: response,
+                    //text: response,
+                    icon: 'info',
+                    timer: 10000,
+                    timerProgressBar: true
+                  });
+                }
+              });
+            }
+          </script>
+        </article>
+
+        <article id="tab4">
+          <h1>Cancelar Compra</h1>
+          <form class="box2" name="contactForm" id="deleteCompra" method="GET">
+            <input name="Cancelacion" type="text" id="Cancelacion" placeholder="Nombre de la Compra" value="" minlength="2" required aria-required="true" class="full-width">
+            <button class="full-width btn--primary" onclick="validarCompraCancelar();">Cancelar Compra</button>
+            <input type="reset" class="full-width btn--primary" value="Limpiar Campos">
+          </form>
+          <script>
+            function validarCompraCancelar() {
+              var Cancelacion;
+
+              Cancelacion = document.getElementById('Cancelacion').value;
+
+              if (Cancelacion === "") {
+                Swal.fire({
+                  title: "Completa los Campos",
+                  text: "Todos los campos son Obligatorios",
+                  icon: 'info',
+                  timer: 10000,
+                  timerProgressBar: true
+                });
+                return false;
+              } else {
+                funcionCancelarCompra(Cancelacion);
+              }
+            }
+
+            function funcionCancelarCompra(a) {
+              var parametros = {
+                "Cancelacion": a
+              };
+              $.ajax({
+                data: parametros,
+                url: 'phpSoap/cancelarCompra.php',
+                type: 'get',
+                success: function(response) {
+                  Swal.fire({
+                    title: response,
+                    //text: response,
+                    icon: 'info',
+                    timer: 10000,
+                    timerProgressBar: true
+                  });
+                }
+              });
+            }
+          </script>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+
+</html>

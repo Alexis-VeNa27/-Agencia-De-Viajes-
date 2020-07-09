@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/styleForm.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+
+  <form class="box" id="addUser" method="GET">
+    <h1>Registrar Nuevo Usuario</h1>
+    <input name="NombreUsuario" type="text" id="NombreUsuario" placeholder="Nombre Completo" value="" minlength="2" required aria-required="true" class="full-width">
+    <input name="FechaDeNacimiento" type="date" id="FechaDeNacimiento" value="" minlength="2" required aria-required="true" class="full-width">
+    <input name="Correo" type="text" id="Correo" placeholder="Correo" value="" minlength="2" required aria-required="true" class="full-width">
+    <select class="full-width mdb-select md-form" name="MetodoPagoUsuario" id="MetodoPagoUsuario" required>
+      <option value="Credito">Credito</option>
+      <option value="Efectivo">Efectivo</option>
+    </select>
+    <input name="NumeroTarjeta" type="text" id="NumeroTarjeta" placeholder="Numero de tarjeta" value="" minlength="2" required aria-required="true" class="full-width">
+    <input type="button" onclick="validarUsuario();" value="Registrar">
+    <input type="reset" class="full-width btn--primary" value="Limpiar Campos">
+  </form>
+  <script>
+    function validarUsuario() {
+      var NombreUsuario, FechaDeNacimiento, Correo, MetodoPago, NumeroTarjeta;
+
+      NombreUsuario = document.getElementById('NombreUsuario').value;
+      FechaDeNacimiento = document.getElementById('FechaDeNacimiento').value;
+      Correo = document.getElementById('Correo').value;
+      MetodoPago = document.getElementById('MetodoPagoUsuario').value;
+      NumeroTarjeta = document.getElementById('NumeroTarjeta').value;
+
+      if (NombreUsuario === "" || FechaDeNacimiento === "" || Correo === "" || MetodoPago === "" || NumeroTarjeta === "") {
+        Swal.fire({
+          title: "Completa los Campos",
+          text: "Todos los campos son Obligatorios",
+          icon: 'info',
+          timer: 10000,
+          timerProgressBar: true
+        });
+        return false;
+      } else {
+        funcionRegistrarUsuario(NombreUsuario, FechaDeNacimiento, Correo, MetodoPago, NumeroTarjeta);
+      }
+    }
+
+    function funcionRegistrarUsuario(a, b, c, d, e, ) {
+      var parametros = {
+        "NombreUsuario": a,
+        "FechaDeNacimiento": b,
+        "Correo": c,
+        "MetodoPagoUsuario": d,
+        "NumeroTarjeta": e
+      };
+      $.ajax({
+        data: parametros,
+        url: 'phpSoap/registrarUsuario.php',
+        type: 'get',
+        success: function(response) {
+          Swal.fire({
+            title: response,
+            //text: response,
+            icon: 'info',
+            timer: 10000,
+            timerProgressBar: true
+          });
+        }
+      });
+    }
+  </script>
+
+</body>
+
+</html>
